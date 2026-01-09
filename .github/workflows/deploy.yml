@@ -13,25 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-     #setup nodejs   
-
-        name: setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-            node-version:18
+          node-version: 18
 
-#install Dependancies 
-        name: install Dependancies
+      - name: Install dependencies
         run: npm install
 
-#build Project Dependancy
-        name: install Dependancies
+      - name: Build project
         run: npm run build
 
-#deploy to github pages
-        name : Deploy to github pages
-        uses : peaceiris/actions-gh-pages@v3
-        with : 
-               github_token : ${{ secrets.GITHUB_TOKEN }}
-               publish_dir : dist
-        
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
